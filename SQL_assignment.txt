@@ -1,0 +1,148 @@
+SELECT ename,empno
+FROM emp
+WHERE job='clerk';
+
+SELECT ename,empno
+FROM emp
+WHERE job='clerk' OR job='MANAGER';
+
+SELECT GETDATE() AS 'date'
+
+SELECT ename,empno,sal
+FROM emp
+WHERE sal BETWEEN 500 AND 1000
+
+
+SELECT ename,empno,sal
+FROM emp
+WHERE sal NOT BETWEEN 1000 AND 2500
+
+SELECT ename,empno,sal
+FROM emp
+WHERE  sal IN (800,950,3000,5000)
+ORDER BY sal
+
+SELECT ename,empno
+FROM emp
+WHERE  ename LIKE '_L%' 
+
+SELECT ename,empno
+FROM emp
+WHERE  ename LIKE '%_D' 
+
+SELECT ename,empno
+FROM emp
+WHERE  ename LIKE 'T%R'
+
+
+SELECT ename,empno
+FROM emp
+WHERE  ename LIKE '%A%'
+
+SELECT ename,empno
+FROM emp
+WHERE  ename LIKE '_____'
+
+
+
+
+
+SELECT empno
+FROM emp
+WHERE  ename='JAMES'
+
+
+SELECT empno,sal
+FROM emp
+WHERE  ename='KING'
+
+
+SELECT empno,ename
+FROM emp
+WHERE  job='PRESIDENT'
+
+SELECT *
+FROM emp
+WHERE job='MANAGER'
+
+SELECT * 
+FROM emp
+WHERE comm IS NOT NULL;
+
+SELECT ename,job,hiredate
+FROM emp
+WHERE hiredate<('01-APR-81');
+
+SELECT ename,sal
+FROM emp
+WHERE ename IN ('KING','BLAKE','FORD','SMITH');
+
+SELECT ename,sal
+FROM emp
+WHERE sal<3500;
+
+SELECT * 
+FROM emp
+WHERE job='CLERK';
+
+SELECT ename,sal as 'Monthly sal',sal*12 as 'Annual sal'
+FROM emp;
+
+SELECT ENAME,sal,sal+(sal*20/100) as 'Hiked salary',(sal+(sal*20/100))*12 as 'Annual sal'
+FROM EMP
+WHERE ename='FORD';
+
+
+SELECT e.deptno,SUM(sal) as 'total salary'
+FROM emp e,dept d
+WHERE e.deptno=d.deptno
+GROUP BY e.deptno;
+
+SELECT ename,MIN(sal)as 'Lowest sal'
+FROM emp
+WHERE deptno=10
+GROUP BY ename;
+
+SELECT job,ROUND(AVG(sal),2) as 'Average sal'
+FROM emp
+WHERE JOB='MANAGER'
+GROUP BY job;
+
+SELECT job,SUM(sal) as 'Total sal'
+FROM emp
+WHERE JOB='SALESMAN'
+GROUP BY job;
+
+SELECT deptno,AVG(sal) as 'avg_sal'
+FROM emp
+GROUP BY deptno 
+HAVING AVG(sal)<(select AVG(sal) 
+                 FROM emp);
+
+SELECT job,COUNT(*) as 'no_of_persons'
+FROM emp
+GROUP BY job;
+
+SELECT job,MAX (sal) as 'highest sal'
+FROM emp
+WHERE JOB='ANALYST'
+GROUP BY job;
+
+SELECT ename,MAX(comm)as'highest commision'
+FROM emp;
+
+SELECT COUNT(deptno) as 'no_of-departments'
+FROM dept;
+
+SELECT ename
+FROM emp
+WHERE ename LIKE '__L%';
+
+
+
+
+
+
+
+
+
